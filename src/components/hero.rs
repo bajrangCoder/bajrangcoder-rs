@@ -3,10 +3,15 @@ use dioxus::prelude::*;
 use gloo_timers::future::sleep;
 use std::time::Duration;
 
-const SKILLS: &str = "\n{\n  \"frontend\": [\"React\", \"Vue\", \"TypeScript\", \"Tailwind\"],\n  \"backend\": [\"Node.js\", \"Express\", \"Python\", \"Django\"],\n  \"database\": [\"MongoDB\", \"PostgreSQL\", \"Redis\"],\n  \"devops\": [\"Docker\", \"AWS\", \"CI/CD\", \"Kubernetes\"]\n}";
-
 #[component]
 pub fn Hero() -> Element {
+    let terminal_prompt = format!(
+        "{}@{}",
+        PERSONAL_DATA.name.to_lowercase(),
+        PERSONAL_DATA.dev_username
+    );
+
+    // typing effect
     const WORDS: &[&str] = &[
         "modern web applications",
         "low level programs",
@@ -97,7 +102,7 @@ pub fn Hero() -> Element {
                                 span { class: "terminal-button minimize" }
                                 span { class: "terminal-button maximize" }
                             }
-                            div { class: "terminal-title", "alex@devfolio: ~/projects" }
+                            div { class: "terminal-title", "{terminal_prompt}: ~/projects" }
                             div { class: "terminal-actions",
                                 i { class: "fas fa-minus" }
                                 i { class: "fas fa-expand" }
@@ -105,43 +110,24 @@ pub fn Hero() -> Element {
                         }
                         div { class: "terminal-body",
                             div { class: "line",
-                                span { class: "prompt", "alex@devfolio:~$" }
+                                span { class: "prompt", "{terminal_prompt}:~$" }
                                 span { class: "command", "cd projects" }
                             }
                             div { class: "line",
-                                span { class: "prompt", "alex@devfolio:~/projects$" }
-                                span { class: "command", "ls -la" }
+                                span { class: "prompt", "{terminal_prompt}:~/projects$" }
+                                span { class: "command", "ls" }
                             }
                             div { class: "line output",
-                                span { "drwxr-xr-x 2 alex alex 4096 Mar 15 14:30 ." }
+                                span { "particles.rs" }
                             }
                             div { class: "line output",
-                                span { "drwxr-xr-x 18 alex alex 4096 Mar 15 14:28 .." }
+                                span { "acode.rs" }
                             }
                             div { class: "line output",
-                                span {
-                                    "-rw-r--r-- 1 alex alex 8980 Mar 10 09:15\n                    e-commerce.js"
-                                }
-                            }
-                            div { class: "line output",
-                                span {
-                                    "-rw-r--r-- 1 alex alex 5240 Feb 28 16:42\n                    portfolio.css"
-                                }
-                            }
-                            div { class: "line output",
-                                span {
-                                    "-rw-r--r-- 1 alex alex 3540 Mar 05 11:32\n                    api-service.ts"
-                                }
+                                span { "plugins & extensions" }
                             }
                             div { class: "line",
-                                span { class: "prompt", "alex@devfolio:~/projects$" }
-                                span { class: "command", "cat skills.json" }
-                            }
-                            div { class: "line output code-block",
-                                pre { "{SKILLS}" }
-                            }
-                            div { class: "line",
-                                span { class: "prompt", "alex@devfolio:~/projects$" }
+                                span { class: "prompt", "{terminal_prompt}:~/projects$" }
                                 span { class: "command blink", "_" }
                             }
                         }
