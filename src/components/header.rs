@@ -96,49 +96,30 @@ pub fn Header() -> Element {
 
         div {
             class: if is_menu_open() { "mobile-menu active" } else { "mobile-menu" },
-            style: "display: {menu_display}; transform: {menu_transform}; transition: transform 0.3s ease-in-out;",
-            div { class: "mobile-menu-content",
-                div { class: "mobile-menu-header",
-                    div { class: "logo",
-                        span { class: "logo-bracket", "{LEFT_CURLY_BRACE}" }
-                        " {PERSONAL_DATA.name} "
-                        span { class: "logo-bracket", "{RIGHT_CURLY_BRACE}" }
-                    }
-                    button {
-                        aria_label: "Close mobile menu",
-                        id: "mobile-menu-close",
-                        onclick: toggle_menu,
-                        i { class: "fas fa-times" }
-                    }
+            style: "display: {menu_display}; transform: {menu_transform};",
+            nav { class: "mobile-menu-links",
+                a { class: "mobile-menu-link active-link", href: "#home", "Home" }
+                a { class: "mobile-menu-link", href: "#about", "About" }
+                a { class: "mobile-menu-link", href: "#projects", "Projects" }
+                a { class: "mobile-menu-link", href: "#contact", "Contact" }
+            }
+            div { class: "social-links",
+                a { aria_label: "GitHub", href: "{PERSONAL_DATA.github}",
+                    i { class: "fab fa-github" }
                 }
-                nav { class: "mobile-nav",
-                    ul {
-                        li {
-                            a { class: "mobile-nav-link", href: "#home", "Home" }
-                        }
-                        li {
-                            a { class: "mobile-nav-link", href: "#about", "About" }
-                        }
-                        li {
-                            a { class: "mobile-nav-link", href: "#projects", "Projects" }
-                        }
-                        li {
-                            a { class: "mobile-nav-link", href: "#contact", "Contact" }
-                        }
-                    }
+                a { aria_label: "LinkedIn", href: "{PERSONAL_DATA.linkedin}",
+                    i { class: "fab fa-linkedin" }
                 }
-                div { class: "mobile-social-links",
-                    a { aria_label: "GitHub", href: "#",
-                        i { class: "fab fa-github" }
-                    }
-                    a { aria_label: "LinkedIn", href: "#",
-                        i { class: "fab fa-linkedin" }
-                    }
-                    a { aria_label: "Twitter", href: "#",
-                        i { class: "fab fa-twitter" }
-                    }
+                a { aria_label: "Twitter", href: "{PERSONAL_DATA.twitter}",
+                    i { class: "fab fa-twitter" }
                 }
             }
+
+        }
+
+        div {
+            class: if is_menu_open() { "menu-overlay active" } else { "menu-overlay" },
+            onclick: toggle_menu,
         }
     }
 }
