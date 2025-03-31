@@ -1,4 +1,4 @@
-use crate::config::THEMES;
+use crate::{config::THEMES, icons::Palette};
 use dioxus::prelude::*;
 use web_sys::window;
 
@@ -44,9 +44,7 @@ pub fn ThemeSwitcher() -> Element {
 
     rsx! {
         div { class: "theme-switcher",
-            button { class: "theme-toggle", onclick: toggle_options,
-                i { class: "fas fa-palette" }
-            }
+            button { class: "theme-toggle", onclick: toggle_options, Palette {} }
             div { class: "theme-options {theme_option_class}",
                 {
                     THEMES

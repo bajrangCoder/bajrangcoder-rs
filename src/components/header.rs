@@ -1,4 +1,7 @@
-use crate::config::PERSONAL_DATA;
+use crate::{
+    config::PERSONAL_DATA,
+    icons::{Github, Linkedin, Twitter},
+};
 use dioxus::prelude::*;
 use gloo_timers::future::TimeoutFuture;
 
@@ -103,18 +106,11 @@ pub fn Header() -> Element {
                 a { class: "mobile-menu-link", href: "#projects", "Projects" }
                 a { class: "mobile-menu-link", href: "#contact", "Contact" }
             }
-            div { class: "social-links",
-                a { aria_label: "GitHub", href: "{PERSONAL_DATA.github}",
-                    i { class: "fab fa-github" }
-                }
-                a { aria_label: "LinkedIn", href: "{PERSONAL_DATA.linkedin}",
-                    i { class: "fab fa-linkedin" }
-                }
-                a { aria_label: "Twitter", href: "{PERSONAL_DATA.twitter}",
-                    i { class: "fab fa-twitter" }
-                }
+            div { class: "menu-social-links",
+                a { aria_label: "GitHub", href: "{PERSONAL_DATA.github}", Github {} }
+                a { aria_label: "LinkedIn", href: "{PERSONAL_DATA.linkedin}", Linkedin {} }
+                a { aria_label: "Twitter", href: "{PERSONAL_DATA.twitter}", Twitter {} }
             }
-
         }
 
         div {

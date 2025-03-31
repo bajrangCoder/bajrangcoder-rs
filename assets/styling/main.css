@@ -476,9 +476,9 @@ nav ul li a.active::after {
     width: 2rem;
 }
 
-.social-links {
+.menu-social-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.5rem;
     margin-top: auto;
     opacity: 0;
     transform: translateY(10px);
@@ -488,25 +488,25 @@ nav ul li a.active::after {
     transition-delay: 0.5s;
 }
 
-.mobile-menu.active .social-links {
+.mobile-menu.active .menu-social-links {
     opacity: 1;
     transform: translateY(0);
 }
 
-.social-links a {
-    width: 40px;
-    height: 40px;
+.menu-social-links a {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background-color: var(--card-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-primary);
-    font-size: 18px;
+    font-size: 20px;
     transition: all 0.3s ease;
 }
 
-.social-link:hover {
+.menu-social-links a:hover {
     background-color: var(--accent-primary);
     color: var(--bg-primary);
     transform: translateY(-3px);

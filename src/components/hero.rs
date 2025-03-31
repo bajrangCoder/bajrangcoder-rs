@@ -1,4 +1,7 @@
-use crate::config::PERSONAL_DATA;
+use crate::{
+    config::PERSONAL_DATA,
+    icons::{Maximize, Minus},
+};
 use dioxus::prelude::*;
 use gloo_timers::future::sleep;
 use std::time::Duration;
@@ -104,8 +107,8 @@ pub fn Hero() -> Element {
                             }
                             div { class: "terminal-title", "{terminal_prompt}: ~/projects" }
                             div { class: "terminal-actions",
-                                i { class: "fas fa-minus" }
-                                i { class: "fas fa-expand" }
+                                Minus{}
+                                Maximize {}
                             }
                         }
                         div { class: "terminal-body",
