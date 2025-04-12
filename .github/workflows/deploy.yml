@@ -16,7 +16,7 @@ jobs:
       ROOT_PATH: .
       OUT_DIRECTORY: target/dx/bajrangcoder/release/web/public
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -33,8 +33,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Install Dioxus CLI via Cargo Binstall
-        run: cargo binstall dioxus-cli --no-confirm
-        shell: bash
+        uses: cargo-bins/cargo-binstall@main
+        with:
+          crate: dioxus-cli
+          args: --no-confirm
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -61,3 +63,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
