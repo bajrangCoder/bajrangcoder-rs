@@ -1,0 +1,52 @@
+name: Build and Deploy Dioxus Static Site
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Set the Rust toolchain (default: stable)
+      TOOLCHAIN: stable
+      ROOT_PATH: .
+      BUILD_MODE: release
+      OUT_DIRECTORY: dist
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Rust Toolchain
+        uses: actions-rs/toolchain@v1.0.6
+        with:
+          toolchain: ${{ env.TOOLCHAIN }}
+          profile: minimal
+          target: wasm32-unknown-unknown
+          override: true
+
+      - name: Cache Rust Dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install Dioxus CLI
+        run: cargo install dioxus-cli
+        shell: bash
+
+      - name: Build Project 🎁
+        run: |
+          cd ${{ env.ROOT_PATH }}
+          dx build --${{ env.BUILD_MODE }}
+          cp ./${{ env.OUT_DIRECTORY }}/index.html ./${{ env.OUT_DIRECTORY }}/404.html
+        shell: bash
+
+      - name: Deploy Project 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages
+          folder: ${{ env.ROOT_PATH }}/${{ env.OUT_DIRECTORY }}
+          clean: false
+          
