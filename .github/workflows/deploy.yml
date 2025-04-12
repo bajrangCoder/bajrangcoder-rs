@@ -41,7 +41,7 @@ jobs:
         uses: cargo-bins/cargo-binstall@main
 
       - name: Install Dioxus-CLI
-        run: cargo binstall dioxus-cli --no-confirm
+        run: cargo binstall dioxus-cli --no-confirm --force
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
