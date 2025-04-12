@@ -32,11 +32,11 @@ jobs:
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v2
 
-      - name: Install Dioxus CLI via Cargo Binstall
+      - name: Cargo Binstall
         uses: cargo-bins/cargo-binstall@main
-        with:
-          crate: dioxus-cli
-          args: --no-confirm
+
+      - name: Install Dioxus-CLI
+        run: cargo binstall dioxus-cli --no-confirm
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
