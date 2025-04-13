@@ -16,7 +16,7 @@ jobs:
     env:
       TOOLCHAIN: stable
       ROOT_PATH: .
-      OUT_DIRECTORY: target/dx/bajrangcoder/release/web/public
+      OUT_DIRECTORY: dist/public
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
       - name: Build Project
         run: |
           cd ${{ env.ROOT_PATH }}
-          dx bundle --platform web --release
+          dx bundle --platform web --release --out-dir "dist"
         shell: bash
       
       - name: List built files (for debugging)
