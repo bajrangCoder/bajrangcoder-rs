@@ -50,7 +50,6 @@ jobs:
         run: |
           cd ${{ env.ROOT_PATH }}
           dx bundle --platform web
-          cp ./${{ env.OUT_DIRECTORY }}/index.html ./${{ env.OUT_DIRECTORY }}/404.html
         shell: bash
 
       - name: Upload Artifact
