@@ -44,12 +44,6 @@ jobs:
         run: |
           cd ${{ env.ROOT_PATH }}
           dx bundle --platform web --release
-          cp ./${{ env.OUT_DIRECTORY }}/index.html ./${{ env.OUT_DIRECTORY }}/404.html
-        shell: bash
-      
-      - name: List built files (for debugging)
-        run: |
-          ls -la ${{ env.OUT_DIRECTORY }}
         shell: bash
       
       - name: Deploy to GitHub Pages
