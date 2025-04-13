@@ -46,6 +46,11 @@ jobs:
           dx bundle --platform web --release
         shell: bash
       
+      - name: List built files (for debugging)
+        run: |
+          find ${{ env.OUT_DIRECTORY }} -type f | sort
+        shell: bash
+      
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
