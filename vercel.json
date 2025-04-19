@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "alias": "bajrangcoder-rs.vercel.app",
+  "builds": [
+    {
+      "src": "./dist/public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/public/$1"
+    }
+  ]
+}
